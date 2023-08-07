@@ -55,7 +55,7 @@ const calculator = {
 
     const history = {
         firstNumber: calculator.firstNumber,
-        SecondNumber: calculator.displayNumber,
+        secondNumber: calculator.displayNumber,
         operator: calculator.operator,
         result: result
     }
