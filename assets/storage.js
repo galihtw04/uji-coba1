@@ -26,20 +26,23 @@ const CACHE_KEY = "calculation_history";
         return [];
     }
  }
- function renderHistory() {
+function renderHistory() {
     const historyData = showHistory();
     let historyList = document.querySelector('#historyList');
     historyList.innerHTML = "";
 
     for (let history of historyData) {
         let row = document.createElement('tr');
-        row.innerHTML = "<td>" + history.firstNumber + "</td>";
-        row.innerHTML = "<td>" + history.operator + "</td>";
-        row.innerHTML = "<td>" + history.secondNumber + "</td>";
-        row.innerHTML = "<td>" + history.result + "</td>";
+        
+        // Concatenate the HTML content for each cell within the row
+        row.innerHTML = "<td>" + history.firstNumber + "</td>" +
+                        "<td>" + history.operator + "</td>" +
+                        "<td>" + history.secondNumber + "</td>" +
+                        "<td>" + history.result + "</td>";
 
         historyList.appendChild(row);
     }
-  }
+}
+
 
   renderHistory();
