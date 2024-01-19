@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: caculator
-        image: muhammadgalih/caculator-web
+        image: registry-nexus.cloud/apps-caculator:latest
         ports:
         - containerPort: 3000
 ---
