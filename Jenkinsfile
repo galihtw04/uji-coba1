@@ -1,7 +1,7 @@
 pipeline {
     # target node yang akan menjalnkan ci/cd or code
     agent {
-           label 'master02'
+           label 'master03'
     }
     stages{
         stage("checkout"){
@@ -29,6 +29,10 @@ pipeline {
         stage('Docker RUN') {
             steps {
                 sh 'sudo docker run -d -p 3000 --name app-caculator  registry-nexus.cloud/apps-caculator:latest'
+        stage('Remove Container & create deployment') {
+            steps {
+                sh 'docker rm -f app-caculator'
+                sh 'kubectl apply -f caculator.yaml
             }
         }
     }
