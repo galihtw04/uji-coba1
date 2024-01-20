@@ -3,7 +3,7 @@ pipeline {
     agent {
            label 'master02'
     }
-//    stages{
+    stages{
 //        stage("checkout"){
 //            steps{
 //                checkout scm
