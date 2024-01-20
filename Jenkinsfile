@@ -3,12 +3,12 @@ pipeline {
     agent {
            label 'master02'
     }
-    stages{
-        stage("checkout"){
-            steps{
-                checkout scm
-            }
-        }
+//    stages{
+//        stage("checkout"){
+//            steps{
+//                checkout scm
+//            }
+//        }
         // create image from Dockerfile github
         stage("Build Image"){
             steps{
