@@ -18,8 +18,8 @@ pipeline {
         // push image to repository local, sure node can hit domain repository local
         stage('Docker Push') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'registry-docker', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
-                    sh 'sudo docker login registry-nexus.cloud -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
+                withCredentials([usernamePassword(credentialsId: 'registry-docker', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                    sh 'sudo docker login registry-nexus.cloud -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
                     sh 'sudo docker push registry-nexus.cloud/apps-caculator:latest'
                     sh 'sudo docker logout'
                 }
@@ -33,9 +33,11 @@ pipeline {
         }
         stage('Remove Container & create deployment') {
             steps {
+                withCredentials([usernamePassword(credentialsId: 'registry-docker', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                 sh 'docker rm -f app-caculator'
                 sh 'kubectl apply -f caculator.yaml'
-                sh 'kubectl create secret docker-registry admin-repo --docker-server=registry-nexus.cloud --docker-username=admin --docker-password=P@ssw0rd --namespace=apps-caculator'
+                sh 'kubectl create secret docker-registry admin-repo --docker-server=registry-nexus.cloud --docker-username=$DOCKER_USERNAME --docker-password=$DOCKER_PASSWORD --namespace=apps-caculator'
+                }
             }
         }
     }
