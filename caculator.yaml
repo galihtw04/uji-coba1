@@ -7,7 +7,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: caculator
-  namespace: apps-caculator
 spec:
   replicas: 3
   selector:
@@ -25,13 +24,11 @@ spec:
         - containerPort: 3000
       imagePullSecrets:
       - name: admin-repo
-
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: svc-caculator
-  namespace: apps-caculator
 spec:
   selector:
     app: caculator
