@@ -32,7 +32,7 @@ pipeline {
         stage('Remove Container & create deployment') {
             steps {
                 sh 'docker rm -f app-caculator'
-                sh 'kubectl apply -f caculator.yaml
+                sh 'kubectl apply -f caculator.yaml'
             }
         }
     }
