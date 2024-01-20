@@ -1,7 +1,7 @@
 pipeline {
     // target node yang akan menjalnkan ci/cd or code
     agent {
-           label 'master03'
+           label 'master02'
     }
     stages{
         stage("checkout"){
