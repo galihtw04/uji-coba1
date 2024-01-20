@@ -33,12 +33,11 @@ pipeline {
         }
         stage('Remove Container & create deployment') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'registry-docker', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
                 sh 'docker rm -f app-caculator'
                 sh 'kubectl apply -f caculator.yaml'
-                sh 'kubectl create secret docker-registry registry-nexus.cloud --docker-server=registry-nexus.cloud --docker-username=$DOCKERHUB_USERNAME --docker-password=$DOCKERHUB_PASSWORD --namespace=apps-caculator'
+                sh 'kubectl create secret docker-registry registry-nexus.cloud --docker-server=registry-nexus.cloud --docker-username=admin--docker-password=P@ssw0rd --namespace=apps-caculator'
             }
         }
     }
 }
-}
+
