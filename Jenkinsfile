@@ -35,7 +35,7 @@ pipeline {
             steps {
                 sh 'docker rm -f app-caculator'
                 sh 'kubectl apply -f caculator.yaml'
-                sh 'kubectl create secret docker-registry registry-nexus.cloud --docker-server=registry-nexus.cloud --docker-username=admin--docker-password=P@ssw0rd --namespace=apps-caculator'
+                sh 'kubectl create secret docker-registry registry-nexus.cloud --docker-server=registry-nexus.cloud --docker-username=admin --docker-password=P@ssw0rd --namespace=apps-caculator'
             }
         }
     }
