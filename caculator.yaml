@@ -6,21 +6,21 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: caculator
+  name: apps-lab3
   namespace: apps-caculator
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: caculator
+      app: apps-lab3
   template:
     metadata:
       labels:
-        app: caculator
+        app: apps-lab3
     spec:
       containers:
-      - name: caculator
-        image: registry-nexus.cloud/apps-caculator:latest
+      - name: apps-lab3
+        image: registry-nexus.cloud/apps1
         ports:
         - containerPort: 3000
       imagePullSecrets:
@@ -29,11 +29,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-caculator
+  name: svc-lab3
   namespace: apps-caculator
 spec:
   selector:
-    app: caculator
+    app: apps-lab3
   ports:
     - protocol: TCP
       port: 3000
