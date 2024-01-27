@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: caculator-lab3
-  namespace: apps-lab3
+  namespace: uji-coba1
 spec:
   replicas: 3
   selector:
@@ -25,7 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: svc-caculator-lab3
-  namespace: apps-lab3
+  namespace: uji-coba1
 spec:
   selector:
     app: caculator-lab3
